@@ -1,6 +1,6 @@
 # Шахматы #
 
-#### Сайт проекта https://pherrom.github.io/chess-react
+#### Сайт проекта https://pheroom.github.io/chess-react
 
 
 #### Используемые технологии: 
@@ -12,6 +12,6 @@
 
  Запусть проекта на локальном сервере для разработки:
 
-### `npm start`
+###### `npm start`
 
 
