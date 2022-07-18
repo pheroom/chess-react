@@ -2,7 +2,6 @@ import React, {FC, useEffect, useState} from 'react';
 import {Board} from "../models/Board";
 import CellComponent from "./CellComponent";
 import {Cell} from "../models/Cell";
-import {Player} from "../models/Player";
 import {Colors} from "../models/Colors";
 import PieceSelection from "./PieceSelection";
 import {Figure} from "../models/figures/Figure";
@@ -27,6 +26,7 @@ const BoardComponent: FC<BoardProps> = observer(({
                                                  }) => {
 
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
+  const [checkColor, setCheckColor] = useState<Colors | null>(null)
 
   function click(cell: Cell) {
     if (game.pause || players.winner) return
@@ -34,9 +34,11 @@ const BoardComponent: FC<BoardProps> = observer(({
       const lastBoard = game.board.getDeepCopyBoard()
       const isCheck = selectedCell.moveFigure(cell)
       if (isCheck) {
+        setCheckColor(cell.figure?.color as Colors)
         game.setBoard(lastBoard)
         return;
       }
+      setCheckColor(null)
       handleMoved(lastBoard)
       if (cell.isPawnEnd()) {
         handlePawnEnd(true)
@@ -92,6 +94,7 @@ const BoardComponent: FC<BoardProps> = observer(({
                 cell={cell}
                 selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
                 click={click}
+                checkColor={checkColor}
               />
             )}
           </React.Fragment>

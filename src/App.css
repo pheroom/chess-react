@@ -24,6 +24,11 @@ body{
 
 input, button, textarea, select, a {
     font: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+button:focus, input:focus {
+    outline: none;
 }
 
 a{
@@ -36,8 +41,8 @@ h1, h2, h3, h4, h5, h6, p, pre, a{
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
+    font-size: 100%;
     vertical-align: baseline;
 }
 
@@ -109,6 +114,7 @@ h6{
 .input-square{
     background-color: var(--main-color);
     border: none;
+    outline: none;
     color: inherit;
     cursor: pointer;
     padding: 8px 20px;
@@ -181,7 +187,7 @@ h6{
     cursor: pointer;
 }
 
-.main_inactive{
+.main-inactive{
     position: absolute;
     top: 101px;
     background-color: rgba(217, 217, 217, 0.7);
@@ -216,7 +222,7 @@ h6{
     margin-bottom: 60px;
 }
 
-.timer__left_title{
+.timer__left-title{
     margin-bottom: 6px;
 }
 
@@ -228,23 +234,37 @@ h6{
     margin-bottom: 37px;
 }
 
+.timer__restart, .timer__pause{
+    width: 100%;
+}
+
 .timer__pause{
     margin-bottom: 60px;
 }
 
-.lost_figures{
+.timer__pause-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer__pause-icon{
+    margin-left: 10px;
+}
+
+.lost-figures{
     margin-bottom: 30px;
 }
 
-.lost_figures__title{
+.lost-figures__title{
     padding-bottom: 16px;
 }
 
-.lost_figures__placeholder{
+.lost-figures__placeholder{
     color: black;
 }
 
-.lost_figures__list{
+.lost-figures__list{
     background-color: white;
     padding: 20px 17px;
     display: flex;
@@ -255,7 +275,7 @@ h6{
     max-width: 264px;
 }
 
-.lost_figures__img{
+.lost-figures__img{
     height: 40px;
 }
 
@@ -276,7 +296,7 @@ h6{
     z-index: 10;
 }
 
-.pawnSelection{
+.pawn-selection{
     position: absolute;
     left: 0;
     top: 0;
@@ -289,7 +309,7 @@ h6{
     align-items: center;
 }
 
-.pawn_cell{
+.pawn-cell{
     cursor: pointer;
 }
 
@@ -318,15 +338,31 @@ h6{
     background-color: #00C2FF;
 }
 
-.available_move{
+.available-move{
     height: 15px;
     width: 15px;
     border-radius: 50%;
     background-color: #00C2FF;
 }
 
-.available_kill{
+.available-kill{
     background-color: #C41E3A;
+}
+
+.king{
+    animation: kingIsUnderAttack 1.5s;
+}
+
+@keyframes kingIsUnderAttack {
+    33% {
+        transform: rotate(10deg);
+    }
+    66% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .main__content{
@@ -337,9 +373,9 @@ h6{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 40px;
+    margin-top: 35px;
     gap: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .main__game{
@@ -363,10 +399,13 @@ h6{
     .main__title{
         margin-bottom: 30px;
     }
+    .main__inner{
+        margin-bottom: 0;
+    }
     .main__game, .main__inner{
         flex-direction: column;
     }
-    .main__content, .sidebar_control, .sidebar_control > *{
+    .main__content, .sidebar__control, .sidebar__control > *{
         width: 100%;
     }
     .main__game{
@@ -386,15 +425,15 @@ h6{
     .timer > div{
         order: -1;
     }
-    .lost_figures{
+    .lost-figures{
         width: 45%;
     }
-    .sidebar_lost_figures{
+    .sidebar__lost-figures-box{
         width: 100%;
         display: flex;
         justify-content: space-around;
     }
-    .lost_figures__list{
+    .lost-figures__list{
         max-width: 100%;
     }
 }
@@ -424,7 +463,7 @@ h6{
     .cell img{
         max-height: 80%;
     }
-    .available_move{
+    .available-move{
         height: 8px;
         width: 8px;
         border-radius: 50%;
@@ -454,19 +493,19 @@ h6{
         flex-wrap: wrap;
         align-items: center;
     }
-    .timer__left_title{
+    .timer__left-title{
         padding-top: 6px;
     }
-    .lost_figures{
+    .lost-figures{
         width: 100%;
     }
-    .sidebar_lost_figures{
+    .sidebar__lost-figures-box{
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-    .lost_figures__list{
+    .lost-figures__list{
         max-width: 100%;
     }
 }

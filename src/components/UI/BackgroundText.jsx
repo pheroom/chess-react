@@ -1,8 +1,8 @@
 import React from 'react';
 
-const BackgroundText = ({text = '', color = 'white'}) => {
+const BackgroundText = ({text = '', bgColor = 'white'}) => {
   return (
-    <span className={`background-text background-text--${color}`}>
+    <span className={`background-text background-text--${bgColor}`}>
       {text}
     </span>
   );

@@ -1,7 +1,5 @@
 import {Board} from "../models/Board";
 import {makeAutoObservable} from "mobx";
-import {players} from "./players";
-import {time} from "./time";
 
 class Game{
   board = new Board()
