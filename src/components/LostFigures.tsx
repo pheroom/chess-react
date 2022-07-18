@@ -16,9 +16,9 @@ const FiguresList: FC<IFiguresList> = ({figures}) => {
     <>
       {
         figures.map(figure =>
-            <span key={figure.id}>
-      {figure.logo && <img className={'lost_figures__img'} src={figure.logo} alt={figure.name}/>}
-    </span>
+          <span key={figure.id}>
+            {figure.logo && <img className={'lost-figures__img'} src={figure.logo} alt={figure.name}/>}
+          </span>
         )
       }
     </>
@@ -29,17 +29,14 @@ const LostFigures: FC<LostFiguresProps> = ({color, figures}) => {
 
   const title = color === 'white' ? 'Белыми' : 'Чёрными'
 
-
-
-
   return (
-    <div className={'lost_figures'}>
-      <div className={'lost_figures__title'}>
-        Взятые фигуры <BackgroundText text={title} color={color}/> :
+    <div className={'lost-figures'}>
+      <div className={'lost-figures__title'}>
+        Взятые фигуры <BackgroundText text={title} bgColor={color}/> :
       </div>
-      <div className="lost_figures__list">
+      <div className="lost-figures__list">
         {figures.length === 0
-          ? <span className={'lost_figures__placeholder'}>Пусто!</span>
+          ? <span className={'lost-figures__placeholder'}>Пусто!</span>
           : <FiguresList figures={figures}/>
         }
       </div>

@@ -45,7 +45,7 @@ const App = observer(() => {
     players.setWinner(null)
   }
 
-  function isCheckMate(player: Player): boolean {
+  function isWinnerExist(player: Player): boolean {
     const color = player?.color
     return game.board.isCheckMateOnBoard(color)
   }
@@ -53,7 +53,7 @@ const App = observer(() => {
   function swapPlayer() {
     const player = players.currentPlayer?.color === Colors.WHITE ? players.blackPlayer : players.whitePlayer
     players.setCurrentPlayer(player)
-    if (isCheckMate(player)) {
+    if (isWinnerExist(player)) {
       players.setWinner(player?.color === Colors.WHITE ? players.blackPlayer : players.whitePlayer)
     }
   }
@@ -83,7 +83,7 @@ const App = observer(() => {
         setSettingsVision={setSettingsVision}
       />
       {settingsVision && <Settings hintsVision={hintsVision} setSettings={handleUpdateSettings}/>}
-      {settingsVision && <div className={'main_inactive'}/>}
+      {settingsVision && <div className={'main-inactive'}/>}
       <div className="main">
         <div className="container">
           <div className="main__inner">
@@ -92,7 +92,7 @@ const App = observer(() => {
                 <Title currentPlayer={players.currentPlayer} winner={players.winner}/>
               </div>
               <div className="main__game">
-                <div className="sidebar_control">
+                <div className="sidebar__control">
                   <Timer
                     handleRestart={handleRestart}
                     timerIsOver={timerIsOver}
@@ -112,7 +112,7 @@ const App = observer(() => {
                 />
               </div>
             </div>
-            <div className={'sidebar_lost_figures'}>
+            <div className={'sidebar__lost-figures-box'}>
               <LostFigures
                 color={'black'}
                 figures={game.board.lostWhiteFigures}
